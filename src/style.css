@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: rgb(5, 13, 31);
+}
+main {
+  background: white;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  border-radius: 4px;
+  border: solid 1px black;
+  padding: 20px;
+}
+.status {
+  align-items: center;
+  padding: 10px 40px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px black;
+}
+.status #ano {
+  text-align: center;
+}
+.status span {
+  cursor: pointer;
+  font-size: 40px;
+}
+span {
+  font-weight: bold;
+  font-size: 20px;
+}
+.days--week {
+  padding-block: 10px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-items: center;
+  margin-bottom: 5px;
+  border-bottom: solid 1px black;
+}
+.container {
+  background: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-items: center;
+  gap: 4px;
+}
+.container span {
+  padding-block: 10px;
+}
+.calender--day {
+  border: solid 0.3px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  padding-block: 20px;
+  background: rgb(114, 114, 114);
+  color: white;
+  font-size: 24px;
+}
+
+.last--day {
+  opacity: 0.3;
+}
