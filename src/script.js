@@ -1,27 +1,27 @@
 const container = document.querySelector(".container");
 const [prev, next] = document.querySelectorAll(".status span");
-const month = document.getElementById("mes");
-const year = document.getElementById("ano");
-const data = new Date();
-data.setDate(1);
+const month = document.getElementById("month");
+const year = document.getElementById("year");
+const date = new Date();
+date.setDate(1);
 
 next.onclick = () => {
-  data.setMonth(data.getMonth() + 1, 1);
+  date.setMonth(date.getMonth() + 1, 1);
   setValues();
 };
 prev.onclick = () => {
-  data.setMonth(data.getMonth() - 1, 1);
+  date.setMonth(date.getMonth() - 1, 1);
   setValues();
 };
 
 function generateNewMonth(laterDate, countOfDays) {
-  for (let i = 1; i < countOfDays + 1; i++) {
+  for (let i = 1; i < countOfDays.getDate() + 1; i++) {
     if (i === 1) {
-      for (let lastWeek = 0; lastWeek < data.getDay(); lastWeek++) {
+      for (let firstWeek = 0; firstWeek < date.getDay(); firstWeek++) {
         const element = document.createElement("div");
         element.className = "calender--day last--day";
         element.innerHTML =
-          laterDate.getDate() - (data.getDay() - lastWeek) + 1;
+          laterDate.getDate() - (date.getDay() - firstWeek) + 1;
         container.appendChild(element);
       }
     }
@@ -29,19 +29,24 @@ function generateNewMonth(laterDate, countOfDays) {
     element.innerHTML = i;
     element.className = `calender--day`;
     container.appendChild(element);
+
+    if (i === countOfDays.getDate()) {
+      for (let lastWeek = 1; 7 - countOfDays.getDay() > lastWeek; ++lastWeek) {
+        const element = document.createElement("div");
+        element.className = "calender--day last--day";
+        element.innerHTML = lastWeek;
+        container.appendChild(element);
+      }
+    }
   }
 }
 
 function setValues() {
-  month.innerHTML = data.toLocaleDateString("pt-BR", { month: "long" });
-  year.innerHTML = data.toLocaleDateString("pt-BR", { year: "numeric" });
-  const countOfDays = new Date(
-    data.getFullYear(),
-    data.getMonth() + 1,
-    0
-  ).getDate();
+  month.innerHTML = date.toLocaleDateString("pt-BR", { month: "long" });
+  year.innerHTML = date.toLocaleDateString("pt-BR", { year: "numeric" });
+  const countOfDays = new Date(date.getFullYear(), date.getMonth() + 1, 0);
   container.innerHTML = "";
-  const laterDate = new Date(data.getFullYear(), data.getMonth(), 0);
+  const laterDate = new Date(date.getFullYear(), date.getMonth(), 0);
   generateNewMonth(laterDate, countOfDays);
 }
 

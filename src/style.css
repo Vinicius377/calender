@@ -16,7 +16,7 @@ main {
   width: 80vw;
   border-radius: 4px;
   border: solid 0.3px black;
-  box-shadow: 7px 4px 7px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 7px 7px 7px 0 rgba(0, 0, 0, 0.5);
   padding: 20px;
 }
 .status {
@@ -26,7 +26,10 @@ main {
   justify-content: space-between;
   border-bottom: solid 1px black;
 }
-.status #ano {
+#month::first-letter {
+  text-transform: uppercase;
+}
+.status #year {
   text-align: center;
 }
 .status span {
@@ -52,9 +55,7 @@ span {
   justify-items: center;
   gap: 4px;
 }
-.container span {
-  padding-block: 10px;
-}
+
 .calender--day {
   border: solid 0.3px rgba(0, 0, 0, 0.5);
   text-align: center;
@@ -62,11 +63,12 @@ span {
   font-size: 20px;
   font-weight: bold;
   padding-block: 20px;
-  background: rgb(114, 114, 114);
-
+  background: rgb(5, 12, 26);
   font-size: 24px;
+  border-radius: 4px;
 }
 
 .last--day {
-  opacity: 0.3;
+  -webkit-text-stroke: 1px black;
+  opacity: 0.6;
 }
